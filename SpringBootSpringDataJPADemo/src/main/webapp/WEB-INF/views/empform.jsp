@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,35 +34,29 @@
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 
-
-
-
-
 </head>
 <body>
 
 
 	<div class='container'>
-
-		<form class='form-group' action='./getEmpData' method="post">
+		<div class="display-4">Date Filter</div>
+		<hr>
+		<form class='form-group' action='./getEmpData' method="post" autocomplete="off">
 			<div class='row'>
-				<div class='col-md-4'>
+				<div class='col-md-3'>
 					<label for='dp1'>From Date</label> <input type='text'
-						name='fromDate' id='dp1' class='form-control datepicker'>
+						name='fromDate' id='dp1' class='form-control datepicker date-input'>
 				</div>
 
 
-				<div class='col-md-4'>
+				<div class='col-md-3'>
 					<label for='dp2'>To Date</label> <input type='text' name='toDate'
 						id='dp2' class='form-control datepicker'>
 				</div>
 			</div>
-			<div class='row mt-2'>
-				<div class='col-md-3'>
+			<div class='row mt-2 col-md-2'>
 					<input type='submit' class='btn btn-success form-control'
 						value='Get Emp Data'>
-				</div>
-
 			</div>
 
 		</form>
@@ -89,7 +85,7 @@
 						<td>${emp.employeeId}</td>
 						<td>${emp.lastName}</td>
 						<td>$ ${emp.salary}</td>
-						<td>${emp.hireDate}</td>
+						<td> <fmt:formatDate value="${emp.hireDate}" pattern="dd-MM-yyyy" />  </td>
 						<td>${emp.departments.departmentName}</td>
 					</tr>
 			</c:forEach>
